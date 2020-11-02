@@ -1,0 +1,351 @@
+/*关于翻页*/
+
+.paging_turn {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+
+.paging_turn span {
+	margin-right: 10px;
+}
+
+.jump_btn {
+	background-color: #009688!important;
+	;
+	color: white!important;
+	padding: 5px 5px!important;
+	border: 2px !important;
+}
+
+
+/*关于表格*/
+
+.table {
+	width: 100%;
+	margin-bottom: 20px;
+	border-collapse: collapse;
+	max-width: 100%;
+	background-color: transparent;
+	border-spacing: 0px;
+	border: 1px solid #DDD;
+}
+
+
+/*.table thead tr {
+	color: #707070;
+	font-weight: normal;
+	background: linear-gradient(to bottom, #F8F8F8 0px, #ECECEC 100%) repeat-x scroll 0% 0% #F2F2F2;
+}*/
+
+.table thead tr th {
+	border: 1px solid #DDD;
+	/*text-align:left;*/
+	/*text-indent:20px;*/
+	text-align: center!important;
+	padding: 10px 8px;
+	font-size: 14px;
+	color: #707070;
+	font-weight: 500;
+	background: #EFF3F8;
+}
+
+.table tbody tr td {
+	border: 1px solid #DDD;
+	/*text-indent: 20px;*/
+	/*text-align: left;*/
+	text-align: center!important;
+	padding: 10px 8px;
+	font-size: 14px;
+}
+
+.table tbody tr:nth-child(2n) {
+	background-color: #EFF3F8;
+}
+
+.table tbody tr .edit button {
+	color: #ffffff;
+	background-color: #2468a9;
+	border: 0px;
+	padding: 3px 5px;
+	cursor: pointer;
+}
+
+.table tbody tr .edit button:hover {
+	background-color: #1a3394;
+}
+
+.table tbody tr .delete button {
+	color: #ffffff;
+	background-color: #D15B47;
+	border: 0px;
+	padding: 3px 5px;
+	cursor: pointer;
+}
+
+.table tbody tr .delete button:hover {
+	background-color: #B74635;
+}
+
+.table tfoot tr td {
+	text-align: right;
+	padding: 10px 40px;
+}
+
+
+/*用户页的按钮*/
+
+.edit_btn {
+	background-color: #009688;
+	color: white;
+	border: 0px;
+	padding: 4px 10px;
+	cursor: pointer;
+	margin-right: 10px;
+	border-radius: 2px;
+	height: 27px;
+}
+
+.edit_btn:hover {
+	opacity: .8;
+}
+
+.del_btn {
+	background-color: #009688;
+	color: white;
+	border: 0px;
+	padding: 4px 10px;
+	cursor: pointer;
+	border-radius: 2px;
+	height: 27px;
+}
+
+.del_btn:hover {
+	opacity: .8;
+}
+
+.page_refresh {
+	/*background-color: #2468a9;*/
+	background-color: #009688;
+	color: white;
+	border: 0px;
+	padding: 4px 10px;
+	cursor: pointer;
+	margin-right: 15px;
+	border-radius: 2px;
+	margin: 5px;
+	margin-top: 0;
+	height: 31px;
+}
+.page_refresh:hover
+{
+	opacity: .8;
+}
+
+.state_btn_not {
+	background: #e5c175;
+	color: white;
+	border: 0px;
+	padding: 0px 5px;
+	cursor: pointer;
+	border-radius: 2px;
+	height: 27px;
+	font-size: 10px;
+}
+.state_btn_not:hover
+{
+	opacity: .8;
+}
+
+.state_btn_ready {
+	background: #e74744;
+	color: white;
+	border: 0px;
+	padding: 0px 5px;
+	cursor: pointer;
+	border-radius: 2px;
+	height: 27px;
+	font-size: 10px;
+}
+
+.state_btn_ready:hover
+{
+	opacity: .8;
+}
+.left_open {
+	height: 45px;
+	float: left;
+	margin-left: 10px;
+}
+
+.left_open i {
+	display: block;
+	background: rgba(255, 255, 255, 0.1);
+	width: 32px;
+	height: 32px;
+	line-height: 32px;
+	border-radius: 3px;
+	text-align: center;
+	margin-top: 7px;
+	cursor: pointer;
+}
+
+
+/*弹出的编辑框样式*/
+
+
+/* 弹出 样式 */
+
+.edit_frame {
+	display: none;
+	position: absolute;
+	z-index: 2;
+	background: white;
+	width: 500px;
+	box-shadow: 0px 0px 25px grey;
+}
+
+.edit_frame .item {
+	width: 500px;
+	height: 48px;
+	line-height: 48px;
+	padding: 0px 70px;
+	background: #EFEEF0;
+}
+
+.edit_frame .item label {
+	font-size: 14px;
+	margin-right: 40px;
+	font-weight: 500;
+}
+
+.edit_frame .item1 {
+	width: 500px;
+	height: 48px;
+	line-height: 48px;
+	padding: 0px 70px;
+	background: #EFEEF0;
+	
+}
+
+.edit_frame .item1 label {
+	font-size: 14px;
+	margin-right: 40px;
+	font-weight: 500;
+}
+
+.edit_frame .item1 input {
+	float: right;
+	margin-top: 16px;
+	margin-right: 20px;
+	padding-top: 2px;
+}
+
+.newline
+{
+	margin-top: 20px;
+}
+
+/* 登录窗第一行*/
+
+.edit_frame .firstLine {
+	height: 48px;
+	line-height: 48px;
+	padding: 0 20px;
+	color: black;
+	background: #fff;
+	font-size: 13px;
+	cursor: move;
+}
+
+.edit_frame .login_close {
+	color: black;
+	display: inline-block;
+	float: right;
+	cursor: pointer;
+}
+
+.edit_input {
+	display: inline-block;
+	height: 50%;
+	width: 50%;
+	margin-top: 2px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+
+/* 登录按钮 */
+
+.edit_frame .item .btn_login {
+	display: block;
+	color: #fff;
+	width: 40%;
+	padding: 8px;
+	border-radius: 3px;
+	font-size: 15px;
+	margin: 10px 120px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	background-color: #009688;
+	text-align: center;
+	height: 36px;
+}
+
+
+/* 遮罩层样式 */
+
+.cover {
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	background-color: #000;
+	opacity: 0.3;
+}
+
+select {
+	width: 100px;
+	height: 25px;
+	padding-left: 4px;
+}
+
+/*侧边栏的控制*/
+
+.main_show {
+	position: absolute;
+	left: 191px;
+	right: 20px;
+	transition: all 1s;
+}
+
+.hide_bar {
+	background-color: #F5F5F5;
+	width: 190px;
+	position: fixed;
+	top: 45px;
+	left: -200px;
+	bottom: 0px;
+	transition: left 0.3s;
+}
+
+.show_bar {
+	background-color: #F5F5F5;
+	width: 190px;
+	position: fixed;
+	top: 45px;
+	left: 0px;
+	bottom: 0px;
+	transition: left 0.3s;
+}
+
+.bar_active {
+	background: #009688 !important;
+	color: #fff;
+	/*border-color: #04564e !important;*/
+	border-left: 4px solid #04564e;
+}

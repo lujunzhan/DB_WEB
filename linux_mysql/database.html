@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>数据库系统项目</title>
+		<link href="css/Site.css" rel="stylesheet" type="text/css" />
+		<link href="css/zy.layout.css" rel="stylesheet" />
+		<link href="css/zy.form.css" rel="stylesheet" />
+		<link href="css/main.css" rel="stylesheet">
+		<link href="css/zy.menu.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/zy.tabs.css" />
+
+		<link rel="stylesheet" href="css/tb_style.css" />
+		<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+	</head>
+
+	<body>
+		<div class="dvcontent">
+			<!--tabs 栏-->
+			<div class="tabs">
+				<div class="hd">
+					<ul>
+						<li class="on" style="box-sizing: initial;-webkit-box-sizing: initial;">查看表单</li>
+					</ul>
+				</div>
+
+				<div style="display: block;padding: 20px;">
+					IP地址：<input type="text" placeholder="默认为:10.242.134.59" name="ipaddress" value="10.242.134.59" id='ip' style="height: 20px;" />
+					<input type="button" value="连接" onclick="ipChange()" style="border-radius: 5px;border: none;margin-right: 20px;" /> 
+					<span>
+					输入sql：<input type="text" placeholder="请输入sql语句" name="sqlinfo" id="sql_input" style="height: 20px;width: 300px;" />
+					<input type="submit" value="确定" onclick="input_sql()" style="border-radius: 5px;border: none;" />
+					</span>
+					<!--显示共有多少条数据-->
+					<span id="show_numbers" style="float:right;margin-right: 60px;">
+						
+					</span>
+
+				</div>
+
+				<div class="bd">
+					<ul style="display: block;padding: 20px;">
+						<li>
+							<div style="overflow-y:auto;overflow-x:hidden;height: 600px;">
+								<table class="table">
+									<!--这里暂无-->
+									<thead>
+										<tr id="tb_head">
+
+										</tr>
+									</thead>
+									<tbody id="tb_show">
+
+									</tbody>
+
+								</table>
+							</div>
+						</li>
+					</ul>
+				</div>
+				
+			</div>
+		</div>
+		
+		
+		<script type="text/javascript">
+			var ipAddress = "10.242.134.59";
+			var url = 'http://' + ipAddress + '/deal.php';
+
+			//检查是否修改了ip地址
+			function ipChange() {
+
+				var changeUrl = $('#ip').val();
+				if(changeUrl != ipAddress) {
+					url = 'http://' + changeUrl + '/deal.php';
+					console.log("服务器ip地址改变：", changeUrl);
+				}
+
+			}
+
+			//sql语句交互
+			function input_sql() {
+				//判断ip地址是否有改变
+				ipChange();
+
+				var sqlInput = $("#sql_input").val();
+				
+				/**
+				 * 0 : 表示输入的sql语句为空
+				 * 1 : 表示insert 进行了插入操作
+				 * 2 : 表示delete 进行了删除操作
+				 * 3 : 表示update 进行了更新操作
+				 * 4 : 表示select 进行查询操作
+				 * 5 : 表示create 进行创建操作 可能是数据库，也可能是数据表
+				 * 6 : 表示alter  进行了更改操作
+				 * 
+				 */
+				var chooseTpye = 4;
+
+				console.log(url);
+				console.log(sqlInput);
+				//对sqlInput进行分析判断
+
+				$.post(url, {
+					sqlinfo: sqlInput,
+					choice: chooseTpye
+				}, function(data, status) {
+
+					console.log("返回数据:", data);
+
+					if(status == 'success') {
+						console.log("请求成功");
+						
+						showdata(data);
+					}
+
+				})
+
+			}
+			//显示获取的数据到web上
+			function showdata(data) {
+				console.log("showData:", data);
+
+				var responseData = data;
+				var table_head = "";
+				var datastream = "";
+				//对表进行清空处理
+				$("#tb_show").empty();
+				$("#show_numbers").empty();
+				
+				//若返回数据不为空，则进行表格的生成
+				if(responseData !== null && responseData.length > 0) {
+					for(var i = 0; i < responseData.length; i++) {
+						datastream += `<tr>`
+						for(var j = 0; j < responseData[0].length; j++) {
+							datastream += `<td>`;
+							datastream += responseData[i][j];
+							datastream += `</td>`;
+						}
+						datastream += `</tr>`;
+					}
+					//显示共有多少条数据
+					var nums = responseData.length;
+					if(nums!=null)
+					{
+						var show ="共";
+						console.log("totalDatas:",nums);
+						show+=nums.toString()+"条数据";
+						$("#show_numbers").append(show);
+					}
+					
+					
+				} else {
+					datastream += "数据为空";
+				}
+
+				console.log(datastream);
+
+				$("#tb_show").append(datastream);
+			}
+		</script>
+
+	</body>
+
+</html>
