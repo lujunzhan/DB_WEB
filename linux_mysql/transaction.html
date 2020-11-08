@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8" />
+	<title>数据库系统项目</title>
+	<link href="css/Site.css" rel="stylesheet" type="text/css" />
+	<link href="css/zy.layout.css" rel="stylesheet" />
+	<link href="css/zy.form.css" rel="stylesheet" />
+	<link href="css/main.css" rel="stylesheet">
+	<link href="css/zy.menu.css" rel="stylesheet" />
+	<link rel="stylesheet" href="css/zy.tabs.css" />
+
+	<link rel="stylesheet" href="css/tb_style.css" />
+	<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div class="dvcontent">
+	<!--tabs 栏-->
+	<div style="display: block;padding-left: 30px;">
+		IP地址：<input type="text" placeholder="默认为:10.242.177.27" name="ipaddress" value="10.242.177.27" id='ip' style="height: 20px;margin-right: 30px;" />
+		<!--<input type="button" value="连接" onclick="ipChange()" style="border-radius: 5px;border: none;margin-right: 20px;" />-->
+		<!--显示共有多少条数据-->
+		<span id="show_numbers" style="float:right;margin-right: 60px;"></span>
+	</div>
+	<div class="tabs">
+		<div class="hd">
+			<ul>
+				<li class="on" style="box-sizing: initial;-webkit-box-sizing: initial;">事务操作</li>
+			</ul>
+		</div>
+
+
+		<div>
+			<textarea style="width: 80%;height:80px;margin: 22px 10px 0 22px;font-size:14px;padding: 10px;" placeholder="请输入sql语句,以分号划分语句!" name="sqlInfo" id="sql_input"></textarea>
+			<input type="submit" value="确定" onclick="input_sql()" style="border-radius: 5px;border: none;position: relative;top: -9px;" />
+		</div>
+
+
+
+		<div class="bd">
+			<ul style="display: block;padding: 20px;">
+				<li>
+					<div style="overflow-y:auto;overflow-x:hidden;height: 520px;">
+						<table class="table">
+							<!--这里暂无-->
+							<thead>
+							<tr id="tb_head">
+								<th>Transaction Operation Information</th>
+							</tr>
+							</thead>
+							<tbody id="tb_show">
+
+							</tbody>
+
+						</table>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+</div>
+
+
+<script type="text/javascript">
+	var ipAddress = "10.242.177.27";
+	var url = 'http://' + ipAddress + '/deal.php';
+
+	//检查是否修改了ip地址
+	function ipChange() {
+
+		let changeUrl = $('#ip').val();
+		if(changeUrl !== ipAddress) {
+			url = 'http://' + changeUrl + '/deal.php';
+			alert("ip地址改变成功："+changeUrl);
+			console.log("服务器ip地址改变：", changeUrl);
+		}
+
+	}
+
+	//sql语句交互
+	function input_sql() {
+		//判断ip地址是否有改变
+		ipChange();
+
+		let sqlInput = $("#sql_input").val();
+
+		let chooseType = "2";
+
+		console.log("nowUrl：",url);
+		console.log("sqlInput：",sqlInput);
+		console.log("chooseType:",chooseType);
+
+		//对sqlInput进行分析判断
+		if(sqlInput == null||sqlInput.length <6)
+		{
+			alert("输入有误!请检查！");
+			return ;
+		}
+
+
+		$.post(url, {
+			sqlInfo: sqlInput,
+			choice: chooseType
+		}, function(data, status) {
+
+			console.log("返回数据:", data);
+
+			if(status === 'success') {
+				console.log("请求成功");
+
+				showData(data);
+			}
+			else
+			{
+				alert("请检查你的IP地址！");
+			}
+
+		})
+
+	}
+	//获取当前时间
+	function GetDate(format) {
+		/**
+		 * format=1表示获取年月日
+		 * format=0表示获取年月日时分秒
+		 **/
+		let now = new Date();
+		let year = now.getFullYear();
+		let month = now.getMonth() + 1;
+		let date = now.getDate();
+		//let day = now.getDay(); //得到周几
+		let hour = now.getHours(); //得到小时
+		let minute = now.getMinutes(); //得到分钟
+		let sec = now.getSeconds(); //得到秒
+
+		let _time;
+		if (format === 1) {
+			_time = year + "-" + month + "-" + date;
+		} else if (format === 2) {
+			_time = year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + sec;
+		}
+
+		return _time;
+	}
+
+	//显示获取的数据到web上
+	function showData(data) {
+		console.log("showData:", data);
+
+		let table_head = "";
+		let showInfo = "";
+		let responseMsg = JSON.parse(data);
+
+		console.log(responseMsg);
+
+		//若返回数据不为空，则进行表格的生成
+		if (responseMsg.msg === 'success') {
+			showInfo += `<tr><td>`
+			showInfo += "事务操作成功！ " + GetDate(2);
+			showInfo += `</td></tr>`
+
+		} else {
+			showInfo += `<tr><td>`
+			showInfo += "操作失败！ " + responseMsg.msg + "  " + GetDate(2);
+			showInfo += `</td></tr>`
+		}
+
+		$("#tb_show").append(showInfo);
+	}
+</script>
+
+</body>
+
+</html>

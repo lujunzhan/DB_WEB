@@ -30,8 +30,8 @@
                         style="height: 20px;margin-right: 40px;"/>
             <!--			<input type="button" value="连接" onclick="ipChange()" style="border-radius: 5px;border: none;margin-right: 20px;" />-->
             <span>
-					输入sql：<input type="text" placeholder="请输入增删改的sql语句" name="sqlinfo" id="sql_input"
-                                 style="height: 20px;width: 350px;"/>
+					输入索引操作语句：<input type="text" placeholder="请输入索引操作语句" name="sqlinfo" id="sql_input"
+                                 style="height: 20px;width: 420px;"/>
 					<input type="submit" value="确定" onclick="input_sql()" style="border-radius: 5px;border: none;"/>
 					</span>
             <!--显示共有多少条数据-->
@@ -65,7 +65,7 @@
 </div>
 
 <script type="text/javascript">
-    var sqlType = ["create", "insert", "update", "delete"];
+    var sqlType = ["create", "alter", "drop"];
 
     var ipAddress = "10.242.177.27";
     var url = 'http://' + ipAddress + '/deal.php';
@@ -88,16 +88,7 @@
 
         let sqlInput = $("#sql_input").val();
 
-        /**
-         * 0 : 表示输入的sql语句为空
-         * 1 : 表示insert 进行了插入操作
-         * 2 : 表示delete 进行了删除操作
-         * 3 : 表示update 进行了更新操作
-         * 4 : 表示select 进行查询操作
-         * 5 : 表示create 进行创建操作 可能是数据库，也可能是数据表
-         * 6 : 表示alter  进行了更改操作
-         */
-        let chooseType = "1";
+        let chooseType = "6";
         let usingType = "";
 
         console.log("nowUrl：", url);
@@ -106,21 +97,25 @@
 
         //对sqlInput进行分析判断
         if (sqlInput.length >= 6) {
-            let sub = sqlInput.substring(0, 6).toLowerCase();
-            console.log(sub);
-
-            //判断是否为alter
-
-
-            //判断是否为有效操作
-            for (let i = 0; i < sqlType.length; i++) {
-                if (sub.localeCompare(sqlType[i]) === 0) {
-                    console.log("有效操作！");
-                    usingType = sub.toUpperCase();
-
-                    break;
-                }
+            //判断是否为create操作
+            let sub1 = sqlInput.substring(0, 6).toLowerCase();
+            console.log(sub1);
+            if (sub1.localeCompare(sqlType[0]) === 0) {
+                usingType = sub1.toUpperCase();
             }
+            //判断是否为alter操作
+            let sub2 = sqlInput.substring(0, 5).toLowerCase();
+            console.log(sub2);
+            if (sub2.localeCompare(sqlType[1]) === 0) {
+                usingType = sub2.toUpperCase();
+            }
+            //判断是否为drop操作
+            let sub3 = sqlInput.substring(0, 4).toLowerCase();
+            console.log(sub3);
+            if (sub3.localeCompare(sqlType[2]) === 0) {
+                usingType = sub3.toUpperCase();
+            }
+
         } else {
             alert("输入有误！请检查！");
             return;
@@ -185,12 +180,12 @@
         //若返回数据不为空，则进行表格的生成
         if (responseMsg.msg === 'success') {
             showInfo += `<tr><td>`
-            showInfo += usingType + " 操作成功！ " + GetDate(2);
+            showInfo += usingType + " 索引操作成功！ " + GetDate(2);
             showInfo += `</td></tr>`
 
         } else {
             showInfo += `<tr><td>`
-            showInfo += "操作失败！ " + responseMsg.data + "  " + GetDate(2);
+            showInfo += "索引操作失败！ " + responseMsg.data + "  " + GetDate(2);
             showInfo += `</td></tr>`
         }
 

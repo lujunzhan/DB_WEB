@@ -31,7 +31,7 @@
             <!--			<input type="button" value="连接" onclick="ipChange()" style="border-radius: 5px;border: none;margin-right: 20px;" />-->
             <span>
 					输入sql：<input type="text" placeholder="请输入增删改的sql语句" name="sqlinfo" id="sql_input"
-                                 style="height: 20px;width: 350px;"/>
+                                 style="height: 20px;width:445px;"/>
 					<input type="submit" value="确定" onclick="input_sql()" style="border-radius: 5px;border: none;"/>
 					</span>
             <!--显示共有多少条数据-->
@@ -65,7 +65,7 @@
 </div>
 
 <script type="text/javascript">
-    var sqlType = ["create", "insert", "update", "delete"];
+    var sqlType = ["create", "insert", "update", "delete","alter","drop"];
 
     var ipAddress = "10.242.177.27";
     var url = 'http://' + ipAddress + '/deal.php';
@@ -88,15 +88,6 @@
 
         let sqlInput = $("#sql_input").val();
 
-        /**
-         * 0 : 表示输入的sql语句为空
-         * 1 : 表示insert 进行了插入操作
-         * 2 : 表示delete 进行了删除操作
-         * 3 : 表示update 进行了更新操作
-         * 4 : 表示select 进行查询操作
-         * 5 : 表示create 进行创建操作 可能是数据库，也可能是数据表
-         * 6 : 表示alter  进行了更改操作
-         */
         let chooseType = "1";
         let usingType = "";
 
@@ -106,21 +97,33 @@
 
         //对sqlInput进行分析判断
         if (sqlInput.length >= 6) {
-            let sub = sqlInput.substring(0, 6).toLowerCase();
-            console.log(sub);
-
-            //判断是否为alter
-
+            let sub1 = sqlInput.substring(0, 6).toLowerCase();
+            console.log(sub1);
 
             //判断是否为有效操作
-            for (let i = 0; i < sqlType.length; i++) {
-                if (sub.localeCompare(sqlType[i]) === 0) {
-                    console.log("有效操作！");
-                    usingType = sub.toUpperCase();
+            for (let i = 0; i < sqlType.length-2; i++) {
+                if (sub1.localeCompare(sqlType[i]) === 0) {
+                    console.log(sqlType[i],"有效操作！");
+                    usingType = sub1.toUpperCase();
 
                     break;
                 }
             }
+
+            //判断是否为alter或drop
+            let sub2 = sqlInput.substring(0, 5).toLowerCase();
+            let sub3 = sqlInput.substring(0, 4).toLowerCase();
+            console.log(sub2);
+            console.log(sub3);
+            if(sqlType[4]===sub2)
+            {
+                usingType = sub2.toUpperCase();
+            }
+            if(sqlType[5]===sub3)
+            {
+                usingType=sub3.toUpperCase();
+            }
+
         } else {
             alert("输入有误！请检查！");
             return;
