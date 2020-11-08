@@ -151,8 +151,9 @@
 			if(nums!=null)
 			{
 				let show = "共";
+
 				console.log("totalDatas:",nums);
-				show+=nums.toString()+"条数据";
+				show+=(nums-1).toString()+"条数据";
 				$("#show_numbers").append(show);
 			}
 

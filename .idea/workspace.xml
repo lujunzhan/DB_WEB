@@ -20,11 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9b274e9-50fc-4f0a-86cb-cc4166bd6279" name="默认的" comment="">
-      <change afterPath="$PROJECT_DIR$/linux_mysql/gen_data.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux_mysql/database.html" beforeDir="false" afterPath="$PROJECT_DIR$/linux_mysql/database.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux_mysql/deal.php" beforeDir="false" afterPath="$PROJECT_DIR$/linux_mysql/deal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux_mysql/reference.html" beforeDir="false" afterPath="$PROJECT_DIR$/linux_mysql/reference.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux_mysql/test.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux_mysql/select.html" beforeDir="false" afterPath="$PROJECT_DIR$/linux_mysql/select.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +90,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1604716754559</updated>
-      <workItem from="1604716756143" duration="20813000" />
+      <workItem from="1604716756143" duration="21608000" />
     </task>
     <servers />
   </component>
