@@ -21,7 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d9b274e9-50fc-4f0a-86cb-cc4166bd6279" name="默认的" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux_mysql/select.html" beforeDir="false" afterPath="$PROJECT_DIR$/linux_mysql/select.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux_mysql/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/linux_mysql/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux_mysql/DB.php" beforeDir="false" afterPath="$PROJECT_DIR$/linux_mysql/DB.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux_mysql/database.html" beforeDir="false" afterPath="$PROJECT_DIR$/linux_mysql/database.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux_mysql/sql.php" beforeDir="false" afterPath="$PROJECT_DIR$/linux_mysql/sql.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,8 +76,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="PHP Web 页面.localhost" />
       <item itemvalue="JavaScript 调试.gen_data.php" />
+      <item itemvalue="PHP Web 页面.localhost" />
     </list>
     <recent_temporary>
       <list>
@@ -91,6 +94,10 @@
       <option name="presentableId" value="Default" />
       <updated>1604716754559</updated>
       <workItem from="1604716756143" duration="21608000" />
+      <workItem from="1604854971407" duration="1927000" />
+      <workItem from="1606117537190" duration="6949000" />
+      <workItem from="1606214273802" duration="1297000" />
+      <workItem from="1606244992317" duration="834000" />
     </task>
     <servers />
   </component>
@@ -107,12 +114,13 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="725" y="161" key="#PHP" timestamp="1604760853684">
+    <state x="725" y="161" key="#PHP" timestamp="1606137100656">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="725" y="161" key="#PHP/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604760853684" />
+    <state x="725" y="161" key="#PHP/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606137100656" />
     <state x="414" y="174" width="1092" height="812" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604717168634">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -173,6 +181,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="164" key="SettingsEditor/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604809543082" />
+    <state x="92" y="92" width="1736" height="856" key="dock-window-1" timestamp="1606137301848">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="dock-window-1/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606137301848" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1604757133167">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

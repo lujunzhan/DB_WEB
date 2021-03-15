@@ -3,7 +3,6 @@
     $username = "root";
     $password = "root";
     $db_name = "data";
-     
     // 创建连接
     $conn = new mysqli($servername, $username, $password,$db_name);
     // 检测连接

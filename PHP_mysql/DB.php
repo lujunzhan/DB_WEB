@@ -186,7 +186,7 @@ class DB
         } else {
 
             $info = "Error:" . $sql . "<br>" . $conn->error;
-            echo $this->jsonExceptionData(400,'fail',$info);
+            echo $this->jsonExceptionData(400,'operation fail',$info);
         }
         $conn->close();
 

@@ -113,8 +113,10 @@
             //判断是否为alter或drop
             let sub2 = sqlInput.substring(0, 5).toLowerCase();
             let sub3 = sqlInput.substring(0, 4).toLowerCase();
+
             console.log(sub2);
             console.log(sub3);
+
             if(sqlType[4]===sub2)
             {
                 usingType = sub2.toUpperCase();

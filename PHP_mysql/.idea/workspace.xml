@@ -17,7 +17,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4262de49-6e89-42cd-81ff-1da9a5d9b128" name="Default Changelist" comment="11.7" />
+    <list default="true" id="4262de49-6e89-42cd-81ff-1da9a5d9b128" name="Default Changelist" comment="11.7">
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB.php" beforeDir="false" afterPath="$PROJECT_DIR$/DB.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -110,6 +114,7 @@
       <workItem from="1604595281556" duration="3828000" />
       <workItem from="1604630472331" duration="5728000" />
       <workItem from="1604645517902" duration="12924000" />
+      <workItem from="1605630740697" duration="2579000" />
     </task>
     <task id="LOCAL-00001" summary="11.7">
       <created>1604682011180</created>
